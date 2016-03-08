@@ -7,11 +7,12 @@ import edu.westga.cs6242.robertcarswellinvestmentcalculator.Model.InvestmentCalc
 import static org.junit.Assert.assertEquals;
 
 public class InvestmentCalculatorTest {
-    private final double RANGE = 0.01;
+    private static final double RANGE = 0.01;
 
     @Test
-    public void constructorSet() throws Exception {
-        InvestmentCalculator investmentCalculator = new InvestmentCalculator(5.00, 0.05, 5);
-        assertEquals(0, investmentCalculator.getFutureValue(), RANGE);
+    public void constructorSetTest() throws Exception {
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(1000.00, 0.03, 10);
+        assertEquals(11463.88, investmentCalculator.getFutureValue(), RANGE);
     }
+
 }

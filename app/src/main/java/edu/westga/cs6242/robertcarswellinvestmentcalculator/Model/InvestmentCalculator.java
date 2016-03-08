@@ -13,6 +13,7 @@ public class InvestmentCalculator {
 
     public double getFutureValue() {
         double futureValue = 0;
+        futureValue = periodicPayment * ((Math.pow(1 + ratePerPeriod, periods) - 1) / ratePerPeriod);
         return futureValue;
     }
 }
