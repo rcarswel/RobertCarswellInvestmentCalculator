@@ -2,14 +2,16 @@ package edu.westga.cs6242.robertcarswellinvestmentcalculator;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import edu.westga.cs6242.robertcarswellinvestmentcalculator.Model.InvestmentCalculator;
 
-/**
- * To work on unit tests, switch the Test Artifact in the Build Variants view.
- */
+import static org.junit.Assert.assertEquals;
+
 public class InvestmentCalculatorTest {
+    private final double RANGE = 0.01;
+
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void constructorSet() throws Exception {
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(5.00, 0.05, 5);
+        assertEquals(0, investmentCalculator.getFutureValue(), RANGE);
     }
 }
