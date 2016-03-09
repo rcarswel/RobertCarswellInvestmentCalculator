@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">RobertCarswellInvestmentCalculator</string>
     <string name="action_settings">Settings</string>
+    <string name="periodicPayment_text">Periodic Payment:</string>
+    <string name="ratePerPeriod_text">Rate Per Period:</string>
+    <string name="periods_text">Periods:</string>
+    <string name="futureValue">Future Value</string>
+    <string name="not_calculated_string">Not Calculated Yet</string>
 </resources>

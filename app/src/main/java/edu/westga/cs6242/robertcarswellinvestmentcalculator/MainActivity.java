@@ -5,9 +5,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.NumberFormat;
+
+import edu.westga.cs6242.robertcarswellinvestmentcalculator.Model.InvestmentCalculator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,5 +54,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void didTapFutureValueButton(View view) {
+        EditText periodicPaymentText = (EditText) findViewById(R.id.periodicPayment_edit_text);
+        EditText ratePerPeriodText = (EditText) findViewById(R.id.ratePerPeriod_edit_text);
+        EditText periodsText = (EditText) findViewById(R.id.periods_edit_text);
+
+        double payment = Double.parseDouble(periodicPaymentText.getText().toString());
+        double rate = Double.parseDouble(ratePerPeriodText.getText().toString());
+        int periods = Integer.parseInt(periodsText.getText().toString());
+
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(payment, rate, periods);
+        double fValue = investmentCalculator.getFutureValue();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String value = formatter.format(fValue);
+
+        TextView messageTextView = (TextView) findViewById(R.id.message_text_view);
+        messageTextView.setText(value);
     }
 }
