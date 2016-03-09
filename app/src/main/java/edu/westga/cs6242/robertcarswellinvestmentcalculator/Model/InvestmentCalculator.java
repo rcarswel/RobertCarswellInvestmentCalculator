@@ -13,7 +13,11 @@ public class InvestmentCalculator {
 
     public double getFutureValue() {
         double futureValue = 0;
-        futureValue = periodicPayment * ((Math.pow(1 + ratePerPeriod, periods) - 1) / ratePerPeriod);
+        if (ratePerPeriod == 0) {
+            futureValue = periodicPayment * periods;
+        } else {
+            futureValue = periodicPayment * ((Math.pow(1 + ratePerPeriod, periods) - 1) / ratePerPeriod);
+        }
         return futureValue;
     }
 }

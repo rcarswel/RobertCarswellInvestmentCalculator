@@ -15,4 +15,21 @@ public class InvestmentCalculatorTest {
         assertEquals(11463.88, investmentCalculator.getFutureValue(), RANGE);
     }
 
+    @Test
+    public void zeroPeriodicPayment() throws Exception {
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(0, 0.03, 10);
+        assertEquals(0, investmentCalculator.getFutureValue(), RANGE);
+    }
+
+    @Test
+    public void zeroRatePerPeriod() throws Exception {
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(1000.00, 0, 10);
+        assertEquals(10000, investmentCalculator.getFutureValue(), RANGE);
+    }
+
+    @Test
+    public void zeroPeriod() throws Exception {
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(1000.00, 0.03, 0);
+        assertEquals(0.00, investmentCalculator.getFutureValue(), RANGE);
+    }
 }
