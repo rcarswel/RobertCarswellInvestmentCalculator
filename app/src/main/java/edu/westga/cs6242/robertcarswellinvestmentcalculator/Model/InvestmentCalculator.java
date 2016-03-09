@@ -12,7 +12,7 @@ public class InvestmentCalculator {
     }
 
     public double getFutureValue() {
-        double futureValue = 0;
+        double futureValue;
         if (ratePerPeriod == 0) {
             futureValue = periodicPayment * periods;
         } else {
