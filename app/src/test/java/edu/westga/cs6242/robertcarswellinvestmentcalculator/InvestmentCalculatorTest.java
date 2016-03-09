@@ -11,7 +11,7 @@ public class InvestmentCalculatorTest {
 
     @Test
     public void constructorSetTest() throws Exception {
-        InvestmentCalculator investmentCalculator = new InvestmentCalculator(1000.00, 0.03, 10);
+        InvestmentCalculator investmentCalculator = new InvestmentCalculator(1000, 0.03, 10);
         assertEquals(11463.88, investmentCalculator.getFutureValue(), RANGE);
     }
 
@@ -48,6 +48,6 @@ public class InvestmentCalculatorTest {
     @Test
     public void negativePeriod() throws Exception {
         InvestmentCalculator investmentCalculator = new InvestmentCalculator(1000, 0.03, -10);
-        assertEquals(-8530.20, investmentCalculator.getFutureValue(), RANGE);
+        assertEquals(-8530.2, investmentCalculator.getFutureValue(), RANGE);
     }
 }

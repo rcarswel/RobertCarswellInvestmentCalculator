@@ -4,15 +4,17 @@ public class InvestmentCalculator {
     private double periodicPayment;
     private double ratePerPeriod;
     private int periods;
+    private double futureValue;
 
     public InvestmentCalculator(double periodicPayment, double ratePerPeriod, int periods) {
         this.periodicPayment = periodicPayment;
         this.ratePerPeriod = ratePerPeriod;
         this.periods = periods;
+        this.futureValue = 0;
+
     }
 
     public double getFutureValue() {
-        double futureValue;
         if (ratePerPeriod == 0) {
             futureValue = periodicPayment * periods;
         } else {
