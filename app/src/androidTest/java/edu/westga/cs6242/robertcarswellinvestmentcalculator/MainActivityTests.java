@@ -1,6 +1,5 @@
 package edu.westga.cs6242.robertcarswellinvestmentcalculator;
 
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.widget.Button;
@@ -32,8 +31,21 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         // Verify greet message
         String actualText = futureValueMessage.getText().toString();
         assertEquals("$11,463.88", actualText);
+    }
 
+    public void testMissingPayment() {
+        MainActivity activity = getActivity();
+        setupScenario(activity);
 
+        sendValue(ratePerPeriodText, "0.03");
+        sendValue(periodsText, "10");
+
+        // Tap "Greet" button
+        TouchUtils.clickView(this, futureValueButton);
+
+        // Verify greet message
+        String actualText = futureValueMessage.getText().toString();
+        assertEquals("$11,463.88", actualText);
     }
 
     private void setupScenario(MainActivity activity) {

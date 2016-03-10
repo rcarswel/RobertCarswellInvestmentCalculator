@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -61,16 +62,28 @@ public class MainActivity extends AppCompatActivity {
         EditText ratePerPeriodText = (EditText) findViewById(R.id.ratePerPeriod_edit_text);
         EditText periodsText = (EditText) findViewById(R.id.periods_edit_text);
 
-        double payment = Double.parseDouble(periodicPaymentText.getText().toString());
-        double rate = Double.parseDouble(ratePerPeriodText.getText().toString());
-        int periods = Integer.parseInt(periodsText.getText().toString());
+        if (periodicPaymentText.getText().length() == 0) {
+            makeToast("Payment is Blank!");
+        } else if (ratePerPeriodText.getText().length() == 0) {
+            makeToast("Rate is Blank!");
+        } else if (periodsText.getText().length() == 0) {
+            makeToast("Periods is Blank!");
+        } else {
+            double payment = Double.parseDouble(periodicPaymentText.getText().toString());
+            double rate = Double.parseDouble(ratePerPeriodText.getText().toString());
+            int periods = Integer.parseInt(periodsText.getText().toString());
 
-        InvestmentCalculator investmentCalculator = new InvestmentCalculator(payment, rate, periods);
-        double fValue = investmentCalculator.getFutureValue();
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        String value = formatter.format(fValue);
+            InvestmentCalculator investmentCalculator = new InvestmentCalculator(payment, rate, periods);
+            double fValue = investmentCalculator.getFutureValue();
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            String value = formatter.format(fValue);
 
-        TextView messageTextView = (TextView) findViewById(R.id.message_text_view);
-        messageTextView.setText(value);
+            TextView messageTextView = (TextView) findViewById(R.id.message_text_view);
+            messageTextView.setText(value);
+        }
+    }
+
+    private void makeToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
