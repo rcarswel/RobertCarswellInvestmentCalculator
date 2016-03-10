@@ -35,6 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/paymentHint"
                 android:inputType="number|numberSigned|numberDecimal" />
         </TableRow>
 
@@ -55,6 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/rateHint"
                 android:inputType="number|numberSigned|numberDecimal" />
         </TableRow>
 
@@ -75,6 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/periodHint"
                 android:inputType="number|numberSigned" />
         </TableRow>
     </TableLayout>

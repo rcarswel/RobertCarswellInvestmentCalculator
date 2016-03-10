@@ -25,27 +25,57 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         sendValue(ratePerPeriodText, "0.03");
         sendValue(periodsText, "10");
 
-        // Tap "Greet" button
+        // Tap "Future Value" button
         TouchUtils.clickView(this, futureValueButton);
 
-        // Verify greet message
+        // Verify future value message
         String actualText = futureValueMessage.getText().toString();
         assertEquals("$11,463.88", actualText);
     }
 
-    public void testMissingPayment() {
+    public void testNoPayment() {
         MainActivity activity = getActivity();
         setupScenario(activity);
 
         sendValue(ratePerPeriodText, "0.03");
         sendValue(periodsText, "10");
 
-        // Tap "Greet" button
+        // Tap "Future Value" button
         TouchUtils.clickView(this, futureValueButton);
 
-        // Verify greet message
+        // Verify future value message
         String actualText = futureValueMessage.getText().toString();
-        assertEquals("$11,463.88", actualText);
+        assertEquals("Not Calculated Yet!", actualText);
+    }
+
+    public void testNoRate() {
+        MainActivity activity = getActivity();
+        setupScenario(activity);
+
+        sendValue(periodicPaymentText, "1000");
+        sendValue(periodsText, "10");
+
+        // Tap "Future Value" button
+        TouchUtils.clickView(this, futureValueButton);
+
+        // Verify future value message
+        String actualText = futureValueMessage.getText().toString();
+        assertEquals("Not Calculated Yet!", actualText);
+    }
+
+    public void testNoPeriod() {
+        MainActivity activity = getActivity();
+        setupScenario(activity);
+
+        sendValue(periodicPaymentText, "1000");
+        sendValue(ratePerPeriodText, "0.03");
+
+        // Tap "Future Value" button
+        TouchUtils.clickView(this, futureValueButton);
+
+        // Verify future value message
+        String actualText = futureValueMessage.getText().toString();
+        assertEquals("Not Calculated Yet!", actualText);
     }
 
     private void setupScenario(MainActivity activity) {
@@ -56,7 +86,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         this.futureValueMessage = (TextView) activity.findViewById(R.id.message_text_view);
     }
 
-    private void sendValue(final EditText editText, String value) {
+    private void sendValue(final EditText editText, final String value) {
         // Send string input value
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
