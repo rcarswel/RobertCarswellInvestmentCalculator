@@ -23,8 +23,8 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         setupScenario(activity);
 
         sendValue(periodicPaymentText, "1000");
-        sendValue(periodicPaymentText, "0.03");
-        sendValue(periodicPaymentText, "10");
+        sendValue(ratePerPeriodText, "0.03");
+        sendValue(periodsText, "10");
 
         // Tap "Greet" button
         TouchUtils.clickView(this, futureValueButton);
