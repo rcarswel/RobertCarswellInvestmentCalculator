@@ -6,7 +6,7 @@
     <string name="periods_text">Periods:</string>
     <string name="futureValue">Future Value</string>
     <string name="not_calculated_string">Not Calculated Yet!</string>
-    <string name="periodHint">Number of Periods. (Integer)</string>
-    <string name="rateHint">Rate  (Decimal)</string>
-    <string name="paymentHint">Payment per Period (Decimal)</string>
+    <string name="periodHint">Periods</string>
+    <string name="rateHint">Rate (Decimal)</string>
+    <string name="paymentHint">Payment</string>
 </resources>
